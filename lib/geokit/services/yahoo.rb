@@ -44,7 +44,7 @@ module Geokit
         geoloc.lat            = result_json['latitude']
         geoloc.lng            = result_json['longitude']
         geoloc.country_code   = result_json['countrycode']
-        geoloc.country_name   = result_json['countryname']
+        geoloc.country        = result_json['countryname']
         geoloc.provider       = 'yahoo'
 
         # extended
