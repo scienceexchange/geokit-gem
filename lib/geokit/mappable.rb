@@ -350,7 +350,7 @@ module Geokit
     # Location attributes.  Full address is a concatenation of all values.  For example:
     # 100 Spear St, San Francisco, CA, 94101, US
     # Street number and street name are extracted from the street address attribute if they don't exist
-    attr_accessor :street_number, :street_name, :street_address, :city, :state, :zip, :country_code, :country
+    attr_accessor :street_number, :street_name, :street_address, :city, :state, :zip, :country_code, :country_name, :country
     attr_accessor :full_address, :all, :district, :province, :sub_premise
     # Attributes set upon return from geocoding.  Success will be true for successful
     # geocode lookups.  The provider will be set to the name of the providing geocoder.
@@ -375,6 +375,7 @@ module Geokit
       @state=h[:state]
       @zip=h[:zip]
       @country_code=h[:country_code]
+      @country_name=h[:country_name]
       @province = h[:province]
       @success=false
       @precision='unknown'
@@ -413,7 +414,7 @@ module Geokit
     # gives you all the important fields as key-value pairs
     def hash
       res={}
-      [:success, :lat, :lng, :country_code, :city, :state, :zip, :street_address, :province,
+      [:success, :lat, :lng, :country_code, :country_name, :city, :state, :zip, :street_address, :province,
        :district, :provider, :full_address, :is_us?, :ll, :precision, :district_fips, :state_fips,
        :block_fips, :sub_premise].each { |s| res[s] = self.send(s.to_s) }
       res
